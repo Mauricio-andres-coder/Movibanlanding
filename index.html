@@ -10,15 +10,48 @@
 <header class="hero">
 <img src="Moviban_logo.jpg" class="logo">
 <h1>Moviban 🚐</h1>
-<p>Te ahorramos la incomodidad del metro, llevandote al trabajo puntual y seguro</p>
-<a class="btn" href="https://wa.me/56968701629" target="_blank">
-
+<p>Conectamos tus viajes dentro de Santiago</p>
+<a class="btn" href="https://wa.me/56977654013" target="_blank">
 Hablar por WhatsApp
 </a>
 </header>
+
+<section class="stats">
+<h2>Moviban hoy</h2>
+<div class="stats-grid">
+<div class="stat">
+<h3 id="pasajeros">0</h3>
+<p>Pasajeros interesados</p>
+</div>
+<div class="stat">
+<h3>3</h3>
+<p>Rutas piloto</p>
+</div>
+<div class="stat">
+<h3>1</h3>
+<p>Van operando</p>
+</div>
+</div>
+</section>
+
+<section class="container">
+<h2>Rutas activas hoy</h2>
+<div class="rutas">
+<div class="ruta">
+Providencia → Ciudad Empresarial
+</div>
+<div class="ruta">
+Maipú → Escuela Militar
+</div>
+<div class="ruta">
+La Florida → Costanera Center
+</div>
+</div>
+</section>
+
 <section class="container">
 <h2>Sugiere una ruta</h2>
-<form id="rutaForm">
+<form>
 <select id="salida">
 <option>Providencia</option>
 <option>Las Condes</option>
@@ -39,23 +72,57 @@ Hablar por WhatsApp
 <option>Huechuraba</option>
 <option>Santiago Centro</option>
 </select>
-<button type="button" onclick="enviarRuta()">Enviar</button>
+<button type="button" onclick="enviarRuta()">
+Enviar sugerencia
+</button>
 </form>
 </section>
+
+<section class="container">
+<h2>Cotiza un viaje especial</h2>
+<form>
+<input type="text" id="nombre" placeholder="Nombre">
+<input type="text" id="origen" placeholder="Origen">
+<input type="text" id="destinoViaje" placeholder="Destino">
+<input type="date" id="fecha">
+<input type="number" id="personas" placeholder="Personas">
+<textarea id="detalle" placeholder="Detalles"></textarea>
+<button type="button" onclick="cotizarViaje()">
+Cotizar viaje
+</button>
+</form>
+</section>
+
 <script>
+let contador = 0
+setInterval(function(){
+contador += Math.floor(Math.random()*3)
+document.getElementById("pasajeros").innerText = contador
+},2000)
 
 function enviarRuta(){
-
 let salida = document.getElementById("salida").value
-
 let destino = document.getElementById("destino").value
-
 let mensaje = `Hola Moviban! Me gustaría sugerir esta ruta: ${salida} → ${destino}`
+window.open(`https://wa.me/56977654013?text=${encodeURIComponent(mensaje)}`)
+}
 
-window.open(`https://wa.me/56968701629?text=${encodeURIComponent(mensaje)}`)
-
+function cotizarViaje(){
+let nombre = document.getElementById("nombre").value
+let origen = document.getElementById("origen").value
+let destino = document.getElementById("destinoViaje").value
+let fecha = document.getElementById("fecha").value
+let personas = document.getElementById("personas").value
+let detalle = document.getElementById("detalle").value
+let mensaje = `Cotización Moviban 🚐
+Nombre: ${nombre}
+Origen: ${origen}
+Destino: ${destino}
+Fecha: ${fecha}
+Personas: ${personas}
+Detalle: ${detalle}`
+window.open(`https://wa.me/56977654013?text=${encodeURIComponent(mensaje)}`)
 }
 </script>
 </body>
 </html>
- 
