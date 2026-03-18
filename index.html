@@ -10,18 +10,18 @@
 <header class="hero">
 <img src="Moviban_logo.jpg" class="logo">
 <h1>Moviban 🚐</h1>
-<p>Te llevamos al trabajo sin tanto empujon en el metro</p>
-<a class="btn" href="https://wa.me/56968701629" target="_blank">
+<p>Viajes compartidos dentro de Santiago</p>
+<a class="btn" href="https://wa.me/56977654013" target="_blank">
 Hablar por WhatsApp
 </a>
 </header>
 
 <section class="stats">
-<h2>Moviban hoy</h2>
+<h2>Interés en Moviban</h2>
 <div class="stats-grid">
 <div class="stat">
 <h3 id="pasajeros">0</h3>
-<p>Pasajeros interesados</p>
+<p>Personas interesadas</p>
 </div>
 <div class="stat">
 <h3>3</h3>
@@ -35,16 +35,35 @@ Hablar por WhatsApp
 </section>
 
 <section class="container">
-<h2>Rutas activas hoy</h2>
+<h2>Rutas compartidas disponibles</h2>
+<p>Inscríbete en una ruta. Cuando lleguemos a 10 pasajeros la abrimos 🚐</p>
 <div class="rutas">
+
 <div class="ruta">
-Providencia → Las condes
+<h3>Providencia → Ciudad Empresarial</h3>
+<p>Horario: 08:00</p>
+<p>Cupos: <span id="cupos1">3</span>/10</p>
+<button onclick="inscribirse('Providencia','Ciudad Empresarial','08:00','cupos1')">
+Quiero inscribirme
+</button>
 </div>
+
 <div class="ruta">
-Nunoa→ Las condes
+<h3>Maipú → Escuela Militar</h3>
+<p>Horario: 07:30</p>
+<p>Cupos: <span id="cupos2">2</span>/10</p>
+<button onclick="inscribirse('Maipú','Escuela Militar','07:30','cupos2')">
+Quiero inscribirme
+</button>
 </div>
+
 <div class="ruta">
-Santiago Centro → Las condes
+<h3>La Florida → Costanera Center</h3>
+<p>Horario: 08:30</p>
+<p>Cupos: <span id="cupos3">4</span>/10</p>
+<button onclick="inscribirse('La Florida','Costanera Center','08:30','cupos3')">
+Quiero inscribirme
+</button>
 </div>
 </div>
 </section>
@@ -52,6 +71,7 @@ Santiago Centro → Las condes
 <section class="container">
 <h2>Sugiere una ruta</h2>
 <form>
+<label>Comuna de salida</label>
 <select id="salida">
 <option>Providencia</option>
 <option>Las Condes</option>
@@ -62,6 +82,8 @@ Santiago Centro → Las condes
 <option>Huechuraba</option>
 <option>Santiago Centro</option>
 </select>
+
+<label>Comuna de destino</label>
 <select id="destino">
 <option>Providencia</option>
 <option>Las Condes</option>
@@ -71,8 +93,10 @@ Santiago Centro → Las condes
 <option>La Florida</option>
 <option>Huechuraba</option>
 <option>Santiago Centro</option>
+</select>
 
-<input type="date" id="fecha">
+<label>Horario que te serviría</label>
+<input type="time" id="hora">
 
 <button type="button" onclick="enviarRuta()">
 Enviar sugerencia
@@ -87,8 +111,8 @@ Enviar sugerencia
 <input type="text" id="origen" placeholder="Origen">
 <input type="text" id="destinoViaje" placeholder="Destino">
 <input type="date" id="fecha">
-<input type="number" id="personas" placeholder="Personas">
-<textarea id="detalle" placeholder="Detalles"></textarea>
+<input type="number" id="personas" placeholder="Número de personas">
+<textarea id="detalle" placeholder="Detalles del viaje"></textarea>
 <button type="button" onclick="cotizarViaje()">
 Cotizar viaje
 </button>
@@ -98,15 +122,32 @@ Cotizar viaje
 <script>
 let contador = 0
 setInterval(function(){
-contador += Math.floor(Math.random()*3)
+contador += Math.floor(Math.random()*2)
 document.getElementById("pasajeros").innerText = contador
 },2000)
 
 function enviarRuta(){
 let salida = document.getElementById("salida").value
 let destino = document.getElementById("destino").value
-let mensaje = `Hola Moviban! Me gustaría sugerir esta ruta: ${salida} → ${destino}`
+let hora = document.getElementById("hora").value
+let mensaje = `Nueva sugerencia de ruta Moviban 🚐
+Origen: ${salida}
+Destino: ${destino}
+Horario sugerido: ${hora}`
 window.open(`https://wa.me/56977654013?text=${encodeURIComponent(mensaje)}`)
+}
+
+function inscribirse(origen,destino,hora,id){
+let cupos = document.getElementById(id)
+let numero = parseInt(cupos.innerText)
+if(numero < 10){
+numero++
+cupos.innerText = numero
+}
+let mensaje = `Quiero inscribirme en esta ruta Moviban 🚐
+Ruta: ${origen} → ${destino}
+Horario: ${hora}`
+window.open(`https://wa.me/56977654013?text=${encodeURIComponent(mensaje)`)
 }
 
 function cotizarViaje(){
