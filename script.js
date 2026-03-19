@@ -13,7 +13,7 @@ guardarDemanda(origen,destino,hora)
 let mensaje = `Quiero inscribirme en esta ruta Moviban 🚐
 Ruta: ${origen} → ${destino}
 Horario: ${hora}`
-let url = "https://wa.me/56977654013?text=" + encodeURIComponent(mensaje)
+let url = "https://wa.me/56968701629?text=" + encodeURIComponent(mensaje)
 window.open(url, "_blank")
 }
 
@@ -26,6 +26,6 @@ let mensaje = `Sugerencia Moviban 🚐
 Origen: ${origen}
 Destino: ${destino}
 Horario: ${hora}`
-let url = "https://wa.me/56977654013?text=" + encodeURIComponent(mensaje)
+let url = "https://wa.me/56968701629?text=" + encodeURIComponent(mensaje)
 window.open(url, "_blank")
 }
