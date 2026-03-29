@@ -29,3 +29,19 @@ Horario: ${hora}`
 let url = "https://wa.me/56968701629?text=" + encodeURIComponent(mensaje)
 window.open(url, "_blank")
 }
+function agendarEvento(){
+let origen = document.getElementById("evento_origen").value
+let destino = document.getElementById("evento_destino").value
+let fecha = document.getElementById("evento_fecha").value
+if(origen === "" || destino === "" || fecha === ""){
+ alert("Completa todos los campos del evento")
+ return
+}
+let mensaje = `Evento Moviban 🚐
+Tipo: Evento (matrimonio / paseo / etc)
+Origen: ${origen}
+Destino: ${destino}
+Fecha: ${fecha}`
+let url = "https://wa.me/56977654013?text=" + encodeURIComponent(mensaje)
+window.open(url, "_blank")
+}
